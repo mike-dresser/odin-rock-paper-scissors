@@ -3,14 +3,14 @@
 
 function getComputerChoice() {
 
-    //Save selection as "choice", choose a random number between 0 and 2
+    //Save selection as "number", choose a random number between 0 and 2
+    let number = Math.floor(Math.random() * 3);
 
-    let choice = Math.floor(Math.random() * 3);
+    //Initialize with an aribrary string
+    let choice = "rock";
 
-    //Based off that number, assign the string "rock", "paper", or "scissors"
-    //Is this reassignment (from number to string) a best practice? 
-
-    switch(choice){
+    //Based off of number, assign the string "rock", "paper", or "scissors"
+    switch(number){
         case 0:
             choice = "rock";
             break;
@@ -30,6 +30,7 @@ function getComputerChoice() {
 //Function to get player choice
 
 function getPlayerChoice() {
+    
     //Variable to hold player input
     let choice = prompt("Please choose: rock, paper, or scissors");
    
@@ -48,17 +49,49 @@ function getPlayerChoice() {
     //Return choice
 }
 
+function playRound() {
+
 //Initialize with no choice
 let playerChoice = false;
+let computerChoice = false;
 
 //Until we get valid input, run getPlayerChoice
 while(!playerChoice) {
     playerChoice = getPlayerChoice();
 }
 
-//If valid, print it
-console.log(playerChoice);
+//Get computer choice
+computerChoice = getComputerChoice();
 
+//Evaluate the winner
+let winner = evaluateWinner(computerChoice, playerChoice);
+
+//Show values
+console.log(`Player choice: ${playerChoice}, Computer choice: ${computerChoice} \n Winner: ${winner}`);
+
+}
+
+function evaluateWinner(computer, player) {
+
+    // a tie does not depend upon the choice made
+    if(computer === player) {
+        return "tie";
+    }
+    // scenarios in which the computer loses
+    else if ((computer === "rock" && player === "paper")
+        || (computer === "paper" && player ==="scissors")
+        || (computer === "scissors" && player ==="rock") 
+    ) {
+        return "player";
+    }
+    //scenarios in which the player loses
+    else if ((player === "rock" && computer === "paper")
+        || (player  === "paper" && computer ==="scissors")
+        || (player  === "scissors" && computer ==="rock") 
+    ) {
+        return "computer";
+    }
+}
 
 
 

@@ -1,13 +1,10 @@
 
-//Function to generate the computer's choice
-
 function getComputerChoice() {
 
     //Save selection as "number", choose a random number between 0 and 2
     let number = Math.floor(Math.random() * 3);
 
-    //Initialize with an aribrary string
-    let choice = "rock";
+    let choice;
 
     //Based off of number, assign the string "rock", "paper", or "scissors"
     switch(number){
@@ -20,14 +17,9 @@ function getComputerChoice() {
         case 2:
             choice = "scissors";
             break;
-        default:
-            console.log("The computer made an illegal choice!");
     }
     return choice;
 }
-
-
-//Function to get player choice
 
 function getPlayerChoice() {
     
@@ -51,9 +43,9 @@ function getPlayerChoice() {
 
 function playRound() {
 
-//Initialize with no choice
-let playerChoice = false;
-let computerChoice = false;
+//Initialize variables, playerChoice undefined for next while statement
+let playerChoice;
+let computerChoice;
 
 //Until we get valid input, run getPlayerChoice
 while(!playerChoice) {
@@ -73,18 +65,18 @@ console.log(`Player choice: ${playerChoice}, Computer choice: ${computerChoice} 
 
 function evaluateWinner(computer, player) {
 
-    // a tie does not depend upon the choice made
+    // a tie does not depend upon the specific choices made
     if(computer === player) {
         return "tie";
     }
-    // scenarios in which the computer loses
+    // scenarios in which the player wins
     else if ((computer === "rock" && player === "paper")
         || (computer === "paper" && player ==="scissors")
         || (computer === "scissors" && player ==="rock") 
     ) {
         return "player";
     }
-    //scenarios in which the player loses
+    //scenarios in which the computer wins
     else if ((player === "rock" && computer === "paper")
         || (player  === "paper" && computer ==="scissors")
         || (player  === "scissors" && computer ==="rock") 

@@ -43,23 +43,22 @@ function getPlayerChoice() {
 
 function playRound() {
 
-//Initialize variables, playerChoice undefined for next while statement
-let playerChoice;
-let computerChoice;
+    //Initialize variables, playerChoice undefined for next while statement
+    let playerChoice;
+    let computerChoice;
 
-//Until we get valid input, run getPlayerChoice
-while(!playerChoice) {
-    playerChoice = getPlayerChoice();
-}
+    //Until we get valid input, run getPlayerChoice
+    while(!playerChoice) {
+        playerChoice = getPlayerChoice();
+    }
 
-//Get computer choice
-computerChoice = getComputerChoice();
+    //Get computer choice
+    computerChoice = getComputerChoice();
 
-//Evaluate the winner
-let winner = evaluateWinner(computerChoice, playerChoice);
-
-//Show values
-console.log(`Player choice: ${playerChoice}, Computer choice: ${computerChoice} \n Winner: ${winner}`);
+    //Evaluate the winner
+    let winner = evaluateWinner(computerChoice, playerChoice);
+    console.log(`Player: ${playerChoice}, Computer: ${computerChoice}\nWinner: ${winner}`);
+    return winner;
 
 }
 
@@ -82,8 +81,25 @@ function evaluateWinner(computer, player) {
     }
 }
 
+function playMatch(numberWins) {
+    // i.e. "Play to 5"; ties will be replayed
+    // initialize with 0 score
+    console.log(`Rounds to play: ${numberWins}`);
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    while(!((playerScore >= numberWins) || (computerScore >= numberWins))) {
+        let winner = playRound();
+        if (winner === "player") playerScore++;
+        else if (winner === "computer") computerScore++;
+        console.log(`Score:\nComputer: ${computerScore} \nPlayer: ${playerScore}`);
+    }
+
+    let matchWinner;
+    if (playerScore > computerScore) matchWinner = "Player";
+    else matchWinner = "Computer";
+    console.log(`${matchWinner} has won!`);
 
 
-//Function to play a round of the game, takes parameters playerSelection and 
-// computerSelection, and returns something like "You lose! Paper beats Rock"
+}
 

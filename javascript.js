@@ -1,7 +1,7 @@
 
 function getComputerChoice() {
 
-    //Save selection as "number", choose a random number between 0 and 2
+    //Choose a random number between 0 and 2 (.floor rounds down) to represent computer choice
     let number = Math.floor(Math.random() * 3);
 
     let choice;
@@ -38,7 +38,6 @@ function getPlayerChoice() {
     else {
         return choice;
     }
-    //Return choice
 }
 
 function playRound() {
@@ -57,9 +56,25 @@ function playRound() {
 
     //Evaluate the winner
     let winner = evaluateWinner(computerChoice, playerChoice);
-    console.log(`Player: ${playerChoice}, Computer: ${computerChoice}\nWinner: ${winner}`);
-    return winner;
 
+    if (winner === 'tie') {
+        console.log(`It's a draw! (${capitalizeInitial(playerChoice)} / ${capitalizeInitial(computerChoice)})`);
+    }
+    else if (winner === 'player') {
+        console.log(`You win! ${capitalizeInitial(playerChoice)} beats ${capitalizeInitial(computerChoice)}!`);
+    }
+    else {
+        console.log(`You lose! ${capitalizeInitial(computerChoice)} beats ${capitalizeInitial(playerChoice)}!`);
+        
+    }
+    return winner;
+}
+
+function capitalizeInitial(string) {
+    //return string with just initial character capitalized
+
+    string = string.toLowerCase();
+    return ((string.substr(0,1)).toUpperCase() + string.substr(1));
 }
 
 function evaluateWinner(computer, player) {
@@ -92,7 +107,7 @@ function playMatch(numberWins) {
         let winner = playRound();
         if (winner === "player") playerScore++;
         else if (winner === "computer") computerScore++;
-        console.log(`Score:\nComputer: ${computerScore} \nPlayer: ${playerScore}`);
+        console.log(`-- Score --\nComputer: ${computerScore} \n  Player: ${playerScore}`);
     }
 
     let matchWinner;
@@ -101,8 +116,10 @@ function playMatch(numberWins) {
     console.log(`${matchWinner} has won!`);
 
 }
+
+
 let roundsEntered = false;
-let numberRounds;
+let numberRounds = 0;
 
 while(!roundsEntered) {
     numberRounds = prompt('Greetings, opponent! What score shall we play to? [0 - 5]');

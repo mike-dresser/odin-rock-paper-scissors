@@ -84,7 +84,7 @@ function evaluateWinner(computer, player) {
 function playMatch(numberWins) {
     // i.e. "Play to 5"; ties will be replayed
     // initialize with 0 score
-    console.log(`Rounds to play: ${numberWins}`);
+    console.log(`We'll play to ${numberWins}`);
     let playerScore = 0;
     let computerScore = 0;
     
@@ -100,6 +100,13 @@ function playMatch(numberWins) {
     else matchWinner = "Computer";
     console.log(`${matchWinner} has won!`);
 
+}
+let roundsEntered = false;
+let numberRounds;
 
+while(!roundsEntered) {
+    numberRounds = prompt('Greetings, opponent! What score shall we play to? [0 - 5]');
+    if ((parseInt(numberRounds) > 0) && (parseInt(numberRounds) < 6)) roundsEntered = true;
 }
 
+playMatch(numberRounds);

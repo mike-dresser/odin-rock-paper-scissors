@@ -76,11 +76,8 @@ function evaluateWinner(computer, player) {
     ) {
         return "player";
     }
-    //scenarios in which the computer wins
-    else if ((player === "rock" && computer === "paper")
-        || (player  === "paper" && computer ==="scissors")
-        || (player  === "scissors" && computer ==="rock") 
-    ) {
+    //otherwise, the computer wins (thanks, Leah!)
+    else {
         return "computer";
     }
 }

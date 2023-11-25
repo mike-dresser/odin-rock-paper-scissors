@@ -90,7 +90,7 @@ function evaluateWinner(computer, player) {
     }
 }
 
-function playMatch(numberWins) {
+function game(numberWins) {
     // i.e. "Play to 5"; ties will be replayed
     // initialize with 0 score
     console.log(`We'll play to ${numberWins}`);
@@ -120,4 +120,4 @@ while(!roundsEntered) {
     if ((parseInt(numberRounds) > 0) && (parseInt(numberRounds) < 6)) roundsEntered = true;
 }
 
-playMatch(numberRounds);
+game(numberRounds);

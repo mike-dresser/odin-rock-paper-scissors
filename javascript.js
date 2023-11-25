@@ -4,21 +4,15 @@ function getComputerChoice() {
     //Choose a random number between 0 and 2 (.floor rounds down) to represent computer choice
     let number = Math.floor(Math.random() * 3);
 
-    let choice;
-
-    //Based off of number, assign the string "rock", "paper", or "scissors"
+    //Based off of number, return the string "rock", "paper", or "scissors"
     switch(number){
         case 0:
-            choice = "rock";
-            break;
+            return "rock";
         case 1:
-            choice = "paper";
-            break;
+            return "paper";
         case 2:
-            choice = "scissors";
-            break;
+            return "scissors";
     }
-    return choice;
 }
 
 function getPlayerChoice() {

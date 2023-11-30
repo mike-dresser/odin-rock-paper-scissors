@@ -15,35 +15,9 @@ function getComputerChoice() {
     }
 }
 
-function getPlayerChoice() {
-    
-    //Variable to hold player input
-    let choice = prompt("Please choose: rock, paper, or scissors");
-   
-    //Make input case insensitive, trim whitespace
-    choice = choice.toLowerCase();
-    choice = choice.trim();
-    
-    //Ensure valid choice, or prompt again
-    if (!(choice === "rock" || choice === "paper" || choice === "scissors")) {
-        console.log("That is not a valid choice");
-        return false;
-    }
-    else {
-        return choice;
-    }
-}
+function playRound(playerChoice) {
 
-function playRound() {
-
-    //Initialize variables, playerChoice undefined for next while statement
-    let playerChoice;
     let computerChoice;
-
-    //Until we get valid input, run getPlayerChoice
-    while(!playerChoice) {
-        playerChoice = getPlayerChoice();
-    }
 
     //Get computer choice
     computerChoice = getComputerChoice();
@@ -112,12 +86,21 @@ function game(numberWins) {
 }
 
 
-let roundsEntered = false;
-let numberRounds = 0;
+const buttons = document.querySelectorAll('button');
+buttons.forEach(addListener);
 
-while(!roundsEntered) {
-    numberRounds = prompt('Greetings, opponent! What score shall we play to? [0 - 5]');
-    if ((parseInt(numberRounds) > 0) && (parseInt(numberRounds) < 6)) roundsEntered = true;
+function addListener(button) {
+    button.addEventListener("click", () => console.log(button.id));
 }
 
-game(numberRounds);
+
+
+// let roundsEntered = false;
+// let numberRounds = 0;
+
+// while(!roundsEntered) {
+//     numberRounds = prompt('Greetings, opponent! What score shall we play to? [0 - 5]');
+//     if ((parseInt(numberRounds) > 0) && (parseInt(numberRounds) < 6)) roundsEntered = true;
+// }
+
+// game(numberRounds);

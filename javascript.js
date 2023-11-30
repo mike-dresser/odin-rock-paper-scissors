@@ -95,7 +95,7 @@ function addListener(button) {
     
 }
 
-const results = document.querySelector('#results');
+const results = document.querySelector('#results p');
 
 
 // let roundsEntered = false;

@@ -1,3 +1,16 @@
+* {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+#container {
+    text-align: center;
+    border: 1px solid black;
+    padding: 40px;
+}
+
+#results p {
+}
 button {
     font-weight: 800;
 }

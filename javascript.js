@@ -26,13 +26,13 @@ function playRound(playerChoice) {
     let winner = evaluateWinner(computerChoice, playerChoice);
 
     if (winner === 'tie') {
-        console.log(`It's a draw! (${capitalizeInitial(playerChoice)} / ${capitalizeInitial(computerChoice)})`);
+        results.textContent = `It's a draw! (${capitalizeInitial(playerChoice)} / ${capitalizeInitial(computerChoice)})`;
     }
     else if (winner === 'player') {
-        console.log(`You win! ${capitalizeInitial(playerChoice)} beats ${capitalizeInitial(computerChoice)}!`);
+        results.textContent = `You win! ${capitalizeInitial(playerChoice)} beats ${capitalizeInitial(computerChoice)}!`;
     }
     else {
-        console.log(`You lose! ${capitalizeInitial(computerChoice)} beats ${capitalizeInitial(playerChoice)}!`);
+        results.textContent = `You lose! ${capitalizeInitial(computerChoice)} beats ${capitalizeInitial(playerChoice)}!`;
         
     }
     return winner;
@@ -85,14 +85,17 @@ function game(numberWins) {
 
 }
 
-
 const buttons = document.querySelectorAll('button');
 buttons.forEach(addListener);
 
 function addListener(button) {
-    button.addEventListener("click", () => console.log(button.id));
+    button.addEventListener("click", () => {
+        playRound(button.id);
+    });
+    
 }
 
+const results = document.querySelector('#results');
 
 
 // let roundsEntered = false;

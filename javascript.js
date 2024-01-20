@@ -64,19 +64,18 @@ function updateScore(player, computer) {
     scoreboardComputer.textContent = computer;
 
     if (playerScore >= gameFinalScore) {
-        alert('Player wins!');
-        resetGame();
+        showModal('Player wins!');
     } else if (computerScore >= gameFinalScore) {
-        alert('Computer wins!');
-        resetGame();
+        showModal('Computer wins!');
     }
 }
 
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
+    gameFinalScore = 5;
     updateScore(playerScore, computerScore);
-    gameFinalScore = Number(prompt('Welcome! How many rounds shall we play?', '5'));
+    // gameFinalScore = Number(prompt('Welcome! How many rounds shall we play?', '5'));
 }
 
 let playerScore = 0;
@@ -92,19 +91,22 @@ function addListener(button) {
     
 }
 
+function showModal(text) {
+    modalText.textContent = text;
+    modal.style.display = 'block';
+}
+
 const results = document.querySelector('#results p');
 const scoreboardPlayer = document.querySelector('#playerScore');
 const scoreboardComputer = document.querySelector('#computerScore');
+const modal = document.querySelector('#modal');
+const modalText = document.querySelector('#modal p');
+const modalClose = document.querySelector('#modalClose');
+
+modalClose.addEventListener('click', () => {
+    modal.style.display = 'none';
+    resetGame();
+})
 
 resetGame();
 
-
-// let roundsEntered = false;
-// let numberRounds = 0;
-
-// while(!roundsEntered) {
-//     numberRounds = prompt('Greetings, opponent! What score shall we play to? [0 - 5]');
-//     if ((parseInt(numberRounds) > 0) && (parseInt(numberRounds) < 6)) roundsEntered = true;
-// }
-
-// game(numberRounds);

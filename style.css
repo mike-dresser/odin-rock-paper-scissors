@@ -19,14 +19,23 @@ body {
 #scoreBox {
     font-size: 20px;
 }
+th {
+    width: 100px;
+}
+
 
 td {
-    padding: 5px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    width: 40px;
+    /* border: 1px solid black; */
 }
+
+
 
 #container {
     text-align: center;
-    /* border: 1px solid black; */
     padding: 40px;
 }
 
@@ -54,19 +63,32 @@ button {
     height: 48px;
     border-style: none;
     border-radius: 10px;
-    margin: 10px auto;
+    margin: 15px auto;
+}
+
+button:hover {
+    box-shadow: 3px 3px 5px rgb(186, 186, 186);
 }
 
 #modal {
-    background-color: rgba(0,0,0,0.4);
-    width: 400px;
+    display: none;
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 10px;
+    width: 50%;
+    height: 25%;
     margin: auto; 
-    padding-bottom: 20px;
+    padding: 5px 10px 20px 5px;
     z-index: 1;
+    position: fixed;
+    top: 40%;
+    left: 25%;
+    box-shadow: 5px 5px 10px rgb(112, 112, 112);
 }
 
 #modal p {
-    font-size: 20px;
+    font-size: 30px;
+    margin-top: 40px;
+    color: white;
     font-weight: bold;
     text-align: center;
 
@@ -74,9 +96,20 @@ button {
 
 #modalClose {
     position: relative;
+    display: inline-block;
+    height: .75em;
+    padding: 0em .1em .5em .3em;
+    width: .75em;
     color: white;
     top: 0px;
-    left: 380px;
+    left: 96%;
     font-size: 20px;
     font-weight: medium;
+    border-radius: 5px;
+}
+
+#modalClose:hover {
+    background-color: rgb(140, 140, 140);
+    cursor: pointer;
+    color: black;
 }

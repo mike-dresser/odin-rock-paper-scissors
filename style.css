@@ -13,13 +13,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* border: 1px solid black; */
 }
 
-#scoreBox {
-    font-size: 20px;
-}
 th {
+    font-size: 20px;
     width: 100px;
 }
 
@@ -29,14 +26,13 @@ td {
     font-size: 40px;
     font-weight: bold;
     width: 40px;
-    /* border: 1px solid black; */
 }
-
 
 
 #container {
     text-align: center;
     padding: 40px;
+    
 }
 
 #results {
@@ -83,14 +79,24 @@ button:hover {
     top: 40%;
     left: 25%;
     box-shadow: 5px 5px 10px rgb(112, 112, 112);
+    animation-name: animateModal;
+    animation-duration: 0.4s;
+}
+
+@keyframes animateModal {
+    from {top: -10%; left: -10%; opacity: 0}
+    to {top: 40%; left: 25%; opacity: 1}
+    
 }
 
 #modal p {
-    font-size: 30px;
+    font-size: 64px;
     margin-top: 40px;
-    color: white;
     font-weight: bold;
     text-align: center;
+    color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
 
 }
 

@@ -1,16 +1,40 @@
 * {
     font-family:'Inter', sans-serif;
     margin: 0px;
-    padding: 5px;
+    padding: 0px;
     
+}
+
+body {
+    padding: 16px;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+
+#scoreBox {
+    font-size: 20px;
+}
+
+td {
+    padding: 5px;
 }
 
 #container {
     text-align: center;
     /* border: 1px solid black; */
     padding: 40px;
-    /* width: 60%; */
-    margin: 40px auto;
+}
+
+#results {
+    font-size: 30px;
+    font-weight: bold;
+    min-height: 36px;
+    margin: 20px;
 }
 
 h1 {
@@ -23,7 +47,12 @@ h1 {
 }
 button {
     font-weight: 800;
+    font-size: 20px;
+    background-color: darkgrey;
     display: block;
     width: 200px;
+    height: 48px;
+    border-style: none;
+    border-radius: 10px;
     margin: 10px auto;
 }

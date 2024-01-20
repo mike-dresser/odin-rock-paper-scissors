@@ -56,3 +56,27 @@ button {
     border-radius: 10px;
     margin: 10px auto;
 }
+
+#modal {
+    background-color: rgba(0,0,0,0.4);
+    width: 400px;
+    margin: auto; 
+    padding-bottom: 20px;
+    z-index: 1;
+}
+
+#modal p {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+#modalClose {
+    position: relative;
+    color: white;
+    top: 0px;
+    left: 380px;
+    font-size: 20px;
+    font-weight: medium;
+}

@@ -1,9 +1,7 @@
 
 function getComputerChoice() {
-
     //Choose a random number between 0 and 2 (.floor rounds down) to represent computer choice
     let number = Math.floor(Math.random() * 3);
-
     //Based off of number, return the string "rock", "paper", or "scissors"
     switch(number){
         case 0:
@@ -16,25 +14,21 @@ function getComputerChoice() {
 }
 
 function playRound(playerChoice) {
-
-    let computerChoice;
-
-    //Get computer choice
-    computerChoice = getComputerChoice();
-
-    //Evaluate the winner
+    let computerChoice = getComputerChoice();
     let winner = evaluateWinner(computerChoice, playerChoice);
-
     if (winner === 'tie') {
         results.textContent = `It's a draw! (${capitalizeInitial(playerChoice)} / ${capitalizeInitial(computerChoice)})`;
     }
     else if (winner === 'player') {
         results.textContent = `You win! ${capitalizeInitial(playerChoice)} beats ${capitalizeInitial(computerChoice)}!`;
+        playerScore++;
     }
     else {
         results.textContent = `You lose! ${capitalizeInitial(computerChoice)} beats ${capitalizeInitial(playerChoice)}!`;
+        computerScore++;
         
     }
+    updateScore(playerScore, computerScore);
     return winner;
 }
 
@@ -64,27 +58,30 @@ function evaluateWinner(computer, player) {
     }
 }
 
-function game(numberWins) {
-    // i.e. "Play to 5"; ties will be replayed
-    // initialize with 0 score
-    console.log(`We'll play to ${numberWins}`);
-    let playerScore = 0;
-    let computerScore = 0;
-    
-    while(!((playerScore >= numberWins) || (computerScore >= numberWins))) {
-        let winner = playRound();
-        if (winner === "player") playerScore++;
-        else if (winner === "computer") computerScore++;
-        console.log(`-- Score --\nComputer: ${computerScore} \n  Player: ${playerScore}`);
+
+function updateScore(player, computer) {
+    scoreboardPlayer.textContent = player;
+    scoreboardComputer.textContent = computer;
+
+    if (playerScore >= gameFinalScore) {
+        alert('Player wins!');
+        resetGame();
+    } else if (computerScore >= gameFinalScore) {
+        alert('Computer wins!');
+        resetGame();
     }
-
-    let matchWinner;
-    if (playerScore > computerScore) matchWinner = "Player";
-    else matchWinner = "Computer";
-    console.log(`${matchWinner} has won!`);
-
 }
 
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    updateScore(playerScore, computerScore);
+    gameFinalScore = Number(prompt('Welcome! How many rounds shall we play?', '5'));
+}
+
+let playerScore = 0;
+let computerScore = 0;
+let gameFinalScore;
 const buttons = document.querySelectorAll('button');
 buttons.forEach(addListener);
 
@@ -96,6 +93,10 @@ function addListener(button) {
 }
 
 const results = document.querySelector('#results p');
+const scoreboardPlayer = document.querySelector('#playerScore');
+const scoreboardComputer = document.querySelector('#computerScore');
+
+resetGame();
 
 
 // let roundsEntered = false;
